@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sua Pausa — respire por 2 a 5 minutos</title>
+<meta name="description" content="Micro-sessões guiadas de respiração para aliviar a ansiedade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:oklch(.965 .018 85);--fg:oklch(.32 .03 140);--card:oklch(.985 .012 85);--primary:oklch(.52 .06 140);--pfg:oklch(.98 .01 85);--muted:oklch(.93 .02 90);--mfg:oklch(.52 .025 130);--border:oklch(.88 .02 100);--sage:oklch(.66 .055 140);--sage-soft:oklch(.84 .04 135);--sun:oklch(.86 .1 80);--ease:cubic-bezier(.45,0,.55,1)}
+*{box-sizing:border-box;margin:0}body{background:var(--bg);color:var(--fg);font-family:"Work Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}.serif{font-family:"Instrument Serif",Georgia,serif;font-weight:400}
+.wrap{max-width:1024px;margin:auto;padding:24px}header.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:1.6rem}.tag{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mfg)}
+.grid{display:grid;gap:48px;padding-top:32px}@media(min-width:768px){.grid{grid-template-columns:1.1fr 1fr;align-items:center}}
+h1{font-size:clamp(3rem,7vw,4.5rem);line-height:1.05}h1 em{color:var(--primary)}.lead{margin-top:24px;max-width:28rem;font-size:1.1rem;line-height:1.7;color:var(--mfg)}
+.ex{display:block;width:100%;text-align:left;margin-top:12px;padding:20px;border-radius:18px;border:1px solid transparent;background:color-mix(in oklab,var(--muted) 50%,transparent);transition:.3s}
+.ex[aria-pressed=true]{background:var(--card);border-color:color-mix(in oklab,var(--primary) 40%,transparent);box-shadow:0 1px 3px #0001}
+.ex .row{display:flex;justify-content:space-between;gap:16px}.ex b{font-weight:500}.ex small,.ex p{color:var(--mfg);font-size:.875rem}.ex p{margin-top:4px}
+.controls{margin-top:32px;display:flex;flex-wrap:wrap;gap:24px;align-items:center}.seg{display:flex;background:var(--muted);border-radius:99px;padding:4px}
+.seg button{padding:8px 16px;border-radius:99px;font-size:.875rem;color:var(--mfg)}.seg button[aria-pressed=true]{background:var(--card);color:var(--fg)}
+.btn{background:var(--primary);color:var(--pfg);padding:12px 32px;border-radius:99px;font-size:.875rem;font-weight:500}.btn:hover{opacity:.9}
+.ghost{border:1px solid color-mix(in oklab,var(--fg) 20%,transparent);background:color-mix(in oklab,var(--card) 60%,transparent);padding:12px 28px;border-radius:99px;font-size:.875rem;backdrop-filter:blur(6px)}
+aside{position:relative}aside img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:2rem;display:block}
+figure{position:absolute;left:24px;right:24px;bottom:-24px;background:color-mix(in oklab,var(--card) 90%,transparent);backdrop-filter:blur(6px);padding:20px;border-radius:18px}
+figure p{margin-top:8px;font-size:1.25rem;line-height:1.35}footer{font-size:.75rem;color:var(--mfg);padding-top:64px}
+#session{display:none;position:fixed;inset:0;overflow:hidden;flex-direction:column;background:var(--bg)}
+#session .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2s;pointer-events:none}
+#session .veil{position:absolute;inset:0;background:color-mix(in oklab,var(--bg) 40%,transparent)}
+.shead{position:relative;z-index:1;display:flex;justify-content:space-between;padding:20px 32px;font-size:.875rem;color:var(--mfg)}
+.smain{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px 64px}
+.stage{position:relative;width:min(24rem,75vw);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.halo,.orb{position:absolute;border-radius:50%;transition-property:transform,opacity;transition-timing-function:var(--ease)}
+.halo{inset:0;background:color-mix(in oklab,var(--sage-soft) 40%,transparent)}.orb{inset:24px;background:radial-gradient(circle at 35% 30%,var(--sun),var(--sage-soft) 55%,var(--sage));box-shadow:0 30px 80px -20px color-mix(in oklab,var(--sage) 55%,transparent)}
+.label{position:relative;display:flex;flex-direction:column;align-items:center}#plabel{font-size:3.5rem}#pcount{margin-top:8px;font-size:1.1rem;opacity:.7}
+#cue{margin-top:48px;max-width:28rem;font-size:1.1rem;line-height:1.7;opacity:.85}.fade{animation:fade .9s var(--ease) both}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.halo,.orb{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="home" class="wrap">
+  <header class="top">
+    <span class="logo serif">Sua Pausa</span>
+    <span class="tag">2 – 5 min</span>
+  </header>
+  <main class="grid">
+    <section class="fade">
+      <h1 class="serif">Respire.<br><em>Você tem tempo.</em></h1>
+      <p class="lead">Uma pausa curta para o corpo lembrar que está seguro. Escolha um ritmo, siga o círculo e deixe o resto esperar alguns minutos.</p>
+      <div id="exlist" style="margin-top:28px"></div>
+      <div class="controls">
+        <div class="seg" id="dur" role="group" aria-label="Duração"></div>
+        <button class="btn" id="start">Começar pausa</button>
+      </div>
+    </section>
+    <aside class="fade">
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100'><rect width='100' height='100' fill='%23d0d7d1'/></svg>" alt="Ilustração de apoio">
+      <figure><span class="tag">Imagem guiada</span><p class="serif" id="metaphor">Inspira e expira calmamente.</p></figure>
+    </aside>
+  </main>
+  <footer>Sua Pausa não substitui acompanhamento profissional. Se a ansiedade persistir, procure um psicólogo ou o CVV (188).</footer>
+</div>
+
+<div id="session">
+  <div class="shead">
+    <span id="stitle">Sessão</span>
+    <button id="sclose">Fechar ✕</button>
+  </div>
+  <div class="smain">
+    <div class="stage">
+      <div class="halo"></div>
+      <div class="orb"></div>
+      <div class="label">
+        <span id="plabel" class="serif">Preparar</span>
+        <span id="pcount"></span>
+      </div>
+    </div>
+    <p id="cue"></p>
+  </div>
+</div>
+
+<script>
+  // Exemplo básico de controlo para o botão começar
+  const startBtn = document.getElementById('start');
+  const homeDiv = document.getElementById('home');
+  const sessionDiv = document.getElementById('session');
+  const closeBtn = document.getElementById('sclose');
+
+  startBtn.addEventListener('click', () => {
+    homeDiv.style.display = 'none';
+    sessionDiv.style.display = 'flex';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sessionDiv.style.display = 'none';
+    homeDiv.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
